@@ -10,10 +10,18 @@ export interface IProduct {
     category: string
 }
 
-export interface IProducts {
-    products: IProduct[]
+export interface ProductState {
+    products: IProduct[],
+    limit: number,
+    skip: number,
+    total: number,
+    sortColumn: string,
+    sortOrder: string
 }
 
-export interface ProductsState {
-    products: IProducts
+export interface IProductApiResult {
+    products: IProduct[],
+    limit: number,
+    skip: number,
+    total: number
 }

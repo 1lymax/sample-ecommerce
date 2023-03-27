@@ -1,7 +1,8 @@
-//import {useDispatch} from "react-redux";
-// import {bindActionCreators} from "redux";
+import {useDispatch} from "react-redux";
+import {bindActionCreators} from "redux";
+import {productActionCreators} from "../store/slices/product.slice";
 
-export const useAlbumActions = () => {
-    //const dispatch = useDispatch()
-    // return bindActionCreators(albumActionCreators, dispatch)
+export const useProductActions = () => {
+    const dispatch = useDispatch()
+     return bindActionCreators(productActionCreators, dispatch)
 }

@@ -1,21 +1,20 @@
 import {configureStore} from "@reduxjs/toolkit";
+import {productSlice} from "./slices/product.slice";
+import {productApi} from "./actions/product.api";
 
 
 export const store =
     configureStore({
         reducer: {
-            // [playlistSlice.name]: playlistSlice.reducer,
+            [productSlice.name]: productSlice.reducer,
 
-            // [trackApi.reducerPath]: trackApi.reducer,
+             [productApi.reducerPath]: productApi.reducer,
         },
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware()
-                // .concat(authApi.middleware),
+                 .concat(productApi.middleware),
         // devTools: true,
     });
 
-
-
-
 export type AppStore = ReturnType<typeof store.getState>;
-export type AppState = ReturnType<AppStore['getState']>;
+export type AppDispatch = typeof store.dispatch
