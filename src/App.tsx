@@ -1,17 +1,16 @@
 import React from "react";
-import styled from "styled-components";
-import {ProductList} from "./pages/ProductList";
-import {ProductSearch} from "./components/Product/ProductSearch";
+import {BrowserRouter} from "react-router-dom";
+import {Navbar} from "./components/Navbar";
+import AppRouter from "./components/Product/AppRouter";
 
-const Container = styled.div``;
 
 function App() {
 
     return (
-        <Container>
-            <ProductSearch/>
-            <ProductList/>
-        </Container>
+        <BrowserRouter>
+            <Navbar/>
+            <AppRouter/>
+        </BrowserRouter>
     );
 }
 

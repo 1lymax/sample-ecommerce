@@ -13,6 +13,7 @@ export const RatingStars: FC<IRatingStars> = ({ rating }) => {
 
     return (
         <Rating
+            readOnly
             value={rating}
             precision={0.1}
             emptyIcon={<Star style={{ opacity: 0.55 }} fontSize="inherit"/>}
