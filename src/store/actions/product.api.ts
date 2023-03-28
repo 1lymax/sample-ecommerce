@@ -51,4 +51,4 @@ export const productApi = createApi({
 
 export const { useGetAllProductsQuery, useGetProductByIdQuery, useCreateProductMutation } = productApi;
 
-export const {} = productApi.endpoints;
+//export const {} = productApi.endpoints;

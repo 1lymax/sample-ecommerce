@@ -12,11 +12,13 @@ export interface IProduct {
 
 export interface ProductState {
     products: IProduct[],
+    filtSortProducts: IProduct[],
     limit: number,
     skip: number,
     total: number,
     sortColumn: string,
-    sortOrder: string
+    sortOrder: string,
+    filter: Omit<IProduct, 'thumbnail'> | null
 }
 
 export interface IProductApiResult {
@@ -25,3 +27,14 @@ export interface IProductApiResult {
     skip: number,
     total: number
 }
+
+
+export type IProductFilter = Omit<IProduct, 'thumbnail'>
+
+export type KeyValue<T> = {
+    [P in keyof T]: {
+        key: P;
+        value: T[P];
+    }
+}[keyof T];
+
