@@ -1,9 +1,9 @@
 // @flow
-import * as React from "react";
 import {FC} from "react";
+import * as React from "react";
 import {Paper, Table, TableBody, TableContainer, TableHead} from "@mui/material";
 import {useAppSelector} from "../hooks/appHook";
-import {ProductItem} from "../components/ProductItem";
+import {ProductItem} from "../components/Product/ProductItem";
 import {useErrorMessage} from "../hooks/useErrorMessage";
 import LoadingContainer from "../components/LoadingContainer";
 import {ProductFilter} from "../components/Product/ProductFilter";
@@ -16,11 +16,10 @@ interface IProductList {
 }
 
 export const ProductList: FC<IProductList> = () => {
-    const { filtSortProducts } = useAppSelector(state => state.product);
-
-
-    const { error, status } = useGetAllProductsQuery({
-            limit: 10
+    const { filteredSortedProducts, apiQuery: q, apiSelectedCategory: category } = useAppSelector(state => state.product);
+    const { error, status } = useGetAllProductsQuery({ q, category, limit: 10 },
+        {
+            refetchOnMountOrArgChange: true
         }
     );
 
@@ -28,7 +27,7 @@ export const ProductList: FC<IProductList> = () => {
 
     return (
         <>
-            {status === "pending" && <LoadingContainer/>}
+            {(status === "pending") && <LoadingContainer/>}
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
@@ -36,13 +35,12 @@ export const ProductList: FC<IProductList> = () => {
                         <ProductFilter/>
                     </TableHead>
                     <TableBody>
-                        {filtSortProducts.map((product) => (
+                        {filteredSortedProducts.map((product) => (
                             <ProductItem key={product.id} product={product}/>
                         ))}
                     </TableBody>
                 </Table>
             </TableContainer>
-            {/*<Pagination/>*/}
         </>
 
     );

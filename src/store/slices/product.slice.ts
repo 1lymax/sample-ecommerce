@@ -1,27 +1,29 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
-import {IProduct, IProductApiResult, KeyValue, IProductFilter, ProductState} from "../../types/product.type";
 import {productApi} from "../actions/product.api";
 import {sortProducts} from "../../helpers/arraySort";
+import {IProduct, IProductApiResult, KeyValue, IProductFilter, ProductState} from "../../types/product.type";
 
+const filterInitialState = {
+    id: 0,
+    title: "",
+    description: "",
+    price: 0,
+    rating: 0,
+    stock: 0,
+    category: ""
+}
 
 const initialState: ProductState = {
     products: [],
-    filtSortProducts: [],
-    limit: 10,
-    skip: 0,
+    filteredSortedProducts: [],
+    categories: [],
     total: 0,
+    apiSelectedCategory: "",
+    apiQuery: "",
     sortColumn: "id",
     sortOrder: "asc",
-    filter: {
-        id: 0,
-        title: "",
-        description: "",
-        price: 0,
-        rating: 0,
-        stock: 0,
-        category: ""
-    }
+    filter: filterInitialState
 };
 
 
@@ -33,23 +35,23 @@ export const productSlice = createSlice({
             state.products = action.payload;
         },
         setFilteredProducts: (state, action: PayloadAction<IProduct[]>) => {
-            state.filtSortProducts = action.payload;
-        },
-        setSkip: (state, action: PayloadAction<number>) => {
-            state.skip = action.payload;
-        },
-        setLimit: (state, action: PayloadAction<number>) => {
-            state.limit = action.payload;
+            state.filteredSortedProducts = action.payload;
         },
         setSortColumn: (state, action: PayloadAction<string>) => {
-            type Key = keyof IProduct;
             state.sortColumn = action.payload;
-            state.filtSortProducts = state.products = sortProducts(state.filtSortProducts, action.payload as Key, state.sortOrder);
+            state.filteredSortedProducts = state.products = sortProducts(
+                state.filteredSortedProducts,
+                action.payload as keyof IProduct,
+                state.sortOrder
+            );
         },
         setSortOrder: (state, action: PayloadAction<string>) => {
-            type Key = keyof IProduct;
             state.sortOrder = action.payload;
-            state.filtSortProducts = state.products = sortProducts(state.filtSortProducts, state.sortColumn as Key, action.payload);
+            state.filteredSortedProducts = state.products = sortProducts(
+                state.filteredSortedProducts,
+                state.sortColumn as keyof IProduct,
+                action.payload
+            );
         },
 
         setFilter: (state, action: PayloadAction<KeyValue<IProductFilter>>) => {
@@ -61,17 +63,31 @@ export const productSlice = createSlice({
                     state.filter[key as Key] = changeValue;
                 }
             }
-        }
-
+        },
+        setApiSelectedCategory: (state, action: PayloadAction<string>) => {
+            state.apiSelectedCategory = action.payload
+        },
+        setApiQuery: (state, action: PayloadAction<string>) => {
+            state.apiQuery = action.payload
+        },
     },
     extraReducers(builder) {
         builder
             .addMatcher(productApi.endpoints.getAllProducts.matchFulfilled, (state, action: PayloadAction<IProductApiResult>) => {
                 state.products = action.payload.products;
-                state.filtSortProducts = action.payload.products;
-                state.skip = action.payload.skip;
-                state.limit = action.payload.limit;
+                state.filteredSortedProducts = action.payload.products;
                 state.total = action.payload.total;
+                state.filter = filterInitialState
+
+            })
+            .addMatcher(productApi.endpoints.getCategories.matchFulfilled, (state, action: PayloadAction<string[]>) => {
+                state.categories = action.payload;
+                state.filter = filterInitialState
+            })
+            .addMatcher(productApi.endpoints.getProductByCategory.matchFulfilled, (state, action: PayloadAction<IProductApiResult>) => {
+                state.products = action.payload.products;
+                state.filteredSortedProducts = action.payload.products;
+                state.filter = filterInitialState
             });
 
     },

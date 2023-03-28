@@ -1,9 +1,9 @@
 // @flow
 import * as React from "react";
 import {FC} from "react";
-import {IProduct} from "../types/product.type";
+import {IProduct} from "../../types/product.type";
 import {TableCell, TableRow} from "@mui/material";
-import {RatingStars} from "./Product/RatingStars";
+import {RatingStars} from "./RatingStars";
 
 
 interface IProductItem {

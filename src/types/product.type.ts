@@ -12,9 +12,10 @@ export interface IProduct {
 
 export interface ProductState {
     products: IProduct[],
-    filtSortProducts: IProduct[],
-    limit: number,
-    skip: number,
+    filteredSortedProducts: IProduct[],
+    categories: string[],
+    apiSelectedCategory: string,
+    apiQuery: string,
     total: number,
     sortColumn: string,
     sortOrder: string,
