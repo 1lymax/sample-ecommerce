@@ -32,13 +32,10 @@ export const ProductSearch: FC<IProductSearch> = () => {
     };
 
     const handleSelectChange = (e: React.SyntheticEvent<Element, Event>, newValue: string | null) => {
-        console.log(newValue);
         setApiSelectedCategory(newValue ? newValue : "");
-
     };
 
     const handleSelectInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        console.log(e.target.value);
         if (!e.target.value) setApiSelectedCategory("");
     };
 
@@ -71,7 +68,6 @@ export const ProductSearch: FC<IProductSearch> = () => {
             />
             <Autocomplete
                 disablePortal
-                id="combo-box-demo"
                 options={categories}
                 sx={{ width: 300, marginX: 3 }}
                 onChange={handleSelectChange}

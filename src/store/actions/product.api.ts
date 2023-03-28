@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {IProduct, IProductApiResult} from "../../types/product.type";
+import {IProductCreate, IProduct, IProductApiResult} from "../../types/product.type";
 import {PRODUCT_API_URL, SELECTED_COLUMNS} from "../../config/api.config";
 import queryString from "query-string";
 
@@ -30,23 +30,7 @@ export const productApi = createApi({
             query: () => `categories`,
         }),
 
-        // searchAlbum: builder.query<IProduct[], any>({
-        //     query: (arg) => ({
-        //         url: `album/search/artist`,
-        //         params: arg
-        //     }),
-        // onCacheEntryAdded(arg, {dispatch, cacheDataLoaded} ): Promise<void> | void {
-        //     try {
-        //         console.log('onCacheEntryAdded')
-        //         cacheDataLoaded.then(result => {
-        //             dispatch(setAlbums(result.data))})
-        //     }catch (e) {
-        //         console.log(e)
-        //     }
-        //
-        // }
-        //}),
-        createProduct: builder.mutation<IProduct, FormData>({
+        createProduct: builder.mutation<IProduct, IProductCreate>({
             query: (args) => ({
                 url: "",
                 method: "POST",

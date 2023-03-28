@@ -1,4 +1,12 @@
 // ID, назва, опис, ціна, фото, рейтинг, сток, категорія.
+
+export type KeyValue<T> = {
+    [P in keyof T]: {
+        key: P;
+        value: T[P];
+    }
+}[keyof T];
+
 export interface IProduct {
     id: number;
     title: string;
@@ -29,13 +37,13 @@ export interface IProductApiResult {
     total: number
 }
 
+export interface IProductCreate {
+    title: string;
+    description: string;
+    category: string;
+    price: string;
+    stock: string
+}
 
 export type IProductFilter = Omit<IProduct, 'thumbnail'>
-
-export type KeyValue<T> = {
-    [P in keyof T]: {
-        key: P;
-        value: T[P];
-    }
-}[keyof T];
 

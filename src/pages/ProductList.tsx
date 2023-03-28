@@ -35,7 +35,7 @@ interface IProductList {
 
 export const ProductList: FC<IProductList> = () => {
     const { filteredSortedProducts, apiQuery: q, apiSelectedCategory: category } = useAppSelector(state => state.product);
-    const { error, status } = useGetAllProductsQuery({ q, category, limit: 10 },
+    const { error, status } = useGetAllProductsQuery({ q, category, limit: 50 },
         {
             refetchOnMountOrArgChange: true
         }
