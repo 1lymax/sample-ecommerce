@@ -44,5 +44,3 @@ export const {
     useCreateProductMutation,
     useGetCategoriesQuery,
 } = productApi;
-
-export const {} = productApi.endpoints;

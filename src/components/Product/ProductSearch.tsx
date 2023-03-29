@@ -52,6 +52,7 @@ export const ProductSearch: FC<IProductSearch> = () => {
         if (searchError) {
             setApiQuery("");
         }
+        // eslint-disable-next-line
     }, [searchError]);
 
     return (

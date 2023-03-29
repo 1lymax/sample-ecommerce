@@ -26,5 +26,6 @@ export const useFilterProducts = (): void => {
             }
             setFilteredProducts(tempProducts);
         }
+        // eslint-disable-next-line
     }, [filter]);
 };

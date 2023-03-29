@@ -10,6 +10,7 @@ export const useMessageError = (message: string, error: FetchBaseQueryError | Se
         if (error) {
             enqueueSnackbar(message, {variant: "error"})
         }
+        // eslint-disable-next-line
     }, [error])
 
 }

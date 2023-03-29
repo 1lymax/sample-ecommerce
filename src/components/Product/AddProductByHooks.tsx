@@ -81,6 +81,7 @@ export const AddProductByHooks = () => {
         if (isSuccess) {
             navigate(PRODUCT_LIST);
         }
+        // eslint-disable-next-line
     }, [isSuccess]);
 
     return (

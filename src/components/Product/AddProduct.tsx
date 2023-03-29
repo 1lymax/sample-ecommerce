@@ -62,6 +62,7 @@ export const AddProduct = () => {
             formik.resetForm();
             navigate(PRODUCT_LIST);
         }
+        // eslint-disable-next-line
     }, [isSuccess]);
 
     const formik = useFormik({

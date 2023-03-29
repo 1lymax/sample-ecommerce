@@ -6,5 +6,6 @@ export const useMessageSuccess = (message: string, isSuccess: boolean) => {
     useEffect(() => {
         if (isSuccess)
             enqueueSnackbar(message, {variant: "success"})
+        // eslint-disable-next-line
     }, [isSuccess])
 }

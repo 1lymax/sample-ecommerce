@@ -102,7 +102,7 @@ export const useIsValid: IUseIsValid = (value, title, validations) => {
                     break;
             }
         }
-
+        // eslint-disable-next-line
     }, [value]);
 
     const isValid = !isEmpty && !isLongerThan && !isShorterThan && isPositiveInteger && isEmailValid && isChecked;
