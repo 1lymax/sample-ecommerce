@@ -2,14 +2,16 @@
 import * as React from "react";
 import {FC} from "react";
 import styled from "styled-components";
-import {useAppSelector} from "../hooks/appHook";
+import {useAppSelector} from "../hooks/useAppSelector";
 import {productColumns} from "../config/product.columns";
 import {North, South} from "@mui/icons-material";
 import {useProductActions} from "../hooks/apiActions";
 
 const Container = styled.div`
-min-width: 20px;
+  margin: 5px;
+  min-width: 20px;
   min-height: 28px;
+  cursor: pointer;
 `;
 
 interface ISortToggle {

@@ -2,15 +2,17 @@
 import {FC} from "react";
 import * as React from "react";
 import {Button, Paper, Table, TableBody, TableContainer, TableHead} from "@mui/material";
-import {useAppSelector} from "../hooks/appHook";
+import {useAppSelector} from "../hooks/useAppSelector";
 import {ProductItem} from "../components/Product/ProductItem";
-import {useErrorMessage} from "../hooks/useErrorMessage";
+import {useMessageError} from "../hooks/useMessageError";
 import LoadingContainer from "../components/LoadingContainer";
 import {ProductFilter} from "../components/Product/ProductFilter";
 import {useGetAllProductsQuery} from "../store/actions/product.api";
 import ProductListHeader from "../components/Product/ProductListHeader";
 import {ProductSearch} from "../components/Product/ProductSearch";
 import styled from "styled-components";
+import {useNavigate} from "react-router";
+import {ADD_PRODUCT_BY_HOOKS, ADD_PRODUCT_ROUTE} from "../config/routes";
 
 const Container = styled.div`
 position: relative;
@@ -34,6 +36,7 @@ interface IProductList {
 }
 
 export const ProductList: FC<IProductList> = () => {
+    const navigate = useNavigate()
     const { filteredSortedProducts, apiQuery: q, apiSelectedCategory: category } = useAppSelector(state => state.product);
     const { error, status } = useGetAllProductsQuery({ q, category, limit: 50 },
         {
@@ -41,7 +44,7 @@ export const ProductList: FC<IProductList> = () => {
         }
     );
 
-    useErrorMessage("Can't load products. Maybe network error", error);
+    useMessageError("Can't load products. Maybe network error", error);
 
     return (
         <Container>
@@ -49,7 +52,8 @@ export const ProductList: FC<IProductList> = () => {
             <Header>
                 <ProductSearch/>
                 <Right>Add new product using:
-                    <Button variant={"contained"}>Formik</Button>
+                    <Button sx={{m: 1}} variant={"contained"} onClick={() => navigate(ADD_PRODUCT_ROUTE)}>Formik & Yup</Button>
+                    <Button sx={{m: 1}} variant={"contained"} onClick={() => navigate(ADD_PRODUCT_BY_HOOKS)}>Custom hooks</Button>
                 </Right>
             </Header>
             <TableContainer component={Paper}>

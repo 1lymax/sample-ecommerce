@@ -2,11 +2,11 @@
 import * as React from "react";
 import {FilterList} from "@mui/icons-material";
 import {InputAdornment, OutlinedInput, TableCell, TableRow} from "@mui/material";
-import {IProductFilter, KeyValue} from "../../types/product.type";
 import {useProductActions} from "../../hooks/apiActions";
+import {useAppSelector} from "../../hooks/useAppSelector";
 import {productColumns} from "../../config/product.columns";
 import {useFilterProducts} from "../../hooks/useFilterProducts";
-import {useAppSelector} from "../../hooks/appHook";
+import {IProductFilter, KeyValue} from "../../types/product.type";
 
 
 export const ProductFilter = () => {

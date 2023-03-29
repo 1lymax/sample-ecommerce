@@ -4,7 +4,7 @@ import {SerializedError} from "@reduxjs/toolkit";
 import {useEffect} from "react";
 
 
-export const useErrorMessage = (message: string, error: FetchBaseQueryError | SerializedError | undefined) => {
+export const useMessageError = (message: string, error: FetchBaseQueryError | SerializedError | undefined) => {
     const {enqueueSnackbar} = useSnackbar()
     useEffect(() => {
         if (error) {

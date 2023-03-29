@@ -5,9 +5,9 @@ import styled from "styled-components";
 import {Autocomplete, InputAdornment, OutlinedInput, TextField} from "@mui/material";
 import {Search} from "@mui/icons-material";
 import {useGetCategoriesQuery} from "../../store/actions/product.api";
-import {useAppSelector} from "../../hooks/appHook";
+import {useAppSelector} from "../../hooks/useAppSelector";
 import {useProductActions} from "../../hooks/apiActions";
-import {useErrorMessage} from "../../hooks/useErrorMessage";
+import {useMessageError} from "../../hooks/useMessageError";
 
 const Container = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ export const ProductSearch: FC<IProductSearch> = () => {
     const { setApiSelectedCategory, setApiQuery } = useProductActions();
     useGetCategoriesQuery();
 
-    useErrorMessage("Can't search product and category at the same time", searchError);
+    useMessageError("Can't search product and category at the same time", searchError);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setApiQuery(e.target.value);

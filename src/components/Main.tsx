@@ -3,7 +3,9 @@ import {FC} from "react";
 import * as React from 'react';
 import styled from "styled-components";
 
-const Container = styled.div``
+const Container = styled.div`
+margin: 40px;
+`
 
 interface IMain {
 
@@ -12,7 +14,7 @@ interface IMain {
 export const Main: FC<IMain> = () => {
  return (
   <Container>
-   Main
+   Sample e-commerce application
   </Container>
  );
 };

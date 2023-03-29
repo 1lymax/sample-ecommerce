@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import {useAppSelector} from "./appHook";
+import {useAppSelector} from "./useAppSelector";
 import {useProductActions} from "./apiActions";
 import {IProductFilter} from "../types/product.type";
 

@@ -19,8 +19,8 @@ export const productApi = createApi({
             providesTags: ["product"]
         }),
 
-        getProductById: builder.query<IProduct, string>({
-            query: (id) => `${id}&select=${SELECTED_COLUMNS}`,
+        getProductById: builder.query<IProduct, string | undefined>({
+            query: (id) => `${id}`,
         }),
         getProductByCategory: builder.query<IProductApiResult, any>({
             query: (arg) => `category/${arg.category}`,

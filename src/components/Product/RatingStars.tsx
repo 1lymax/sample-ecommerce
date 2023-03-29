@@ -6,11 +6,10 @@ import {Star} from "@mui/icons-material";
 
 
 interface IRatingStars {
-    rating: number;
+    rating: number | undefined;
 }
 
 export const RatingStars: FC<IRatingStars> = ({ rating }) => {
-
     return (
         <Rating
             readOnly
