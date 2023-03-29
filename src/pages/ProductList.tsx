@@ -53,8 +53,8 @@ export const ProductList: FC<IProductList> = () => {
             <Header>
                 <ProductSearch/>
                 <Right>Add new product using:
-                    <Button sx={{m: 1}} variant={"contained"} onClick={() => navigate(ADD_PRODUCT_ROUTE)}>Formik & Yup</Button>
-                    <Button sx={{m: 1}} variant={"contained"} onClick={() => navigate(ADD_PRODUCT_BY_HOOKS)}>Custom hooks</Button>
+                    <Button sx={{marginY: 1}} variant={"contained"} onClick={() => navigate(ADD_PRODUCT_ROUTE)}>Formik & Yup</Button>
+                    <Button sx={{marginY: 1}} variant={"contained"} onClick={() => navigate(ADD_PRODUCT_BY_HOOKS)}>Custom hooks</Button>
                 </Right>
             </Header>
             <TableContainer component={Paper}>

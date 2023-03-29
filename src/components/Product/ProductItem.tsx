@@ -29,7 +29,7 @@ export const ProductItem: FC<IProductItem> = ({ product }) => {
             key={product.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
         >
-            <TableCell align={"right"}>{product.id}</TableCell>
+            <TableCell align={"center"}>{product.id}</TableCell>
             <TableCell align={"left"} sx={{ display: "flex", flexDirection: "column" }}>
                 <Link
                     component={"a"}

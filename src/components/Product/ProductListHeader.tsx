@@ -8,6 +8,7 @@ import {productColumns} from "../../config/product.columns";
 const CellTitleWrapper = styled.div`
   display: flex;
   align-items: flex-start;
+  margin-left: 10px;
 `
 
 const ProductListHeader = () => {
