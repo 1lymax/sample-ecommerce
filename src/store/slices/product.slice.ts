@@ -53,7 +53,6 @@ export const productSlice = createSlice({
                 action.payload
             );
         },
-
         setFilter: (state, action: PayloadAction<KeyValue<IProductFilter>>) => {
             for (const [key, value] of Object.entries(action.payload)) {
                 type Key = keyof IProductFilter
@@ -78,18 +77,11 @@ export const productSlice = createSlice({
                 state.filteredSortedProducts = action.payload.products;
                 state.total = action.payload.total;
                 state.filter = filterInitialState
-
             })
             .addMatcher(productApi.endpoints.getCategories.matchFulfilled, (state, action: PayloadAction<string[]>) => {
                 state.categories = action.payload;
                 state.filter = filterInitialState
             })
-            .addMatcher(productApi.endpoints.getProductByCategory.matchFulfilled, (state, action: PayloadAction<IProductApiResult>) => {
-                state.products = action.payload.products;
-                state.filteredSortedProducts = action.payload.products;
-                state.filter = filterInitialState
-            });
-
     },
 });
 

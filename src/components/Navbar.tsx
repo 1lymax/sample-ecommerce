@@ -1,9 +1,10 @@
 // @flow
-import * as React from "react";
 import {FC} from "react";
+import * as React from "react";
+import {Button} from "@mui/material";
 import styled from "styled-components";
 import {useNavigate} from "react-router";
-import {Button} from "@mui/material";
+
 import {ADD_PRODUCT_ROUTE, MAIN_ROUTE, PRODUCT_LIST} from "../config/routes";
 
 const Container = styled.div`

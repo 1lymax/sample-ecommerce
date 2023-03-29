@@ -2,6 +2,7 @@
 import * as React from "react";
 import {FilterList} from "@mui/icons-material";
 import {InputAdornment, OutlinedInput, TableCell, TableRow} from "@mui/material";
+
 import {useProductActions} from "../../hooks/apiActions";
 import {useAppSelector} from "../../hooks/useAppSelector";
 import {productColumns} from "../../config/product.columns";

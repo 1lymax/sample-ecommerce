@@ -1,6 +1,6 @@
 // @flow
-import * as React from "react";
 import {FC} from "react";
+import * as React from "react";
 import {Rating} from "@mui/material";
 import {Star} from "@mui/icons-material";
 

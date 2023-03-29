@@ -1,11 +1,13 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 import {TableCell, TableRow} from "@mui/material";
+
 import {SortToggle} from "../SortToggle";
 import {productColumns} from "../../config/product.columns";
 
 const CellTitleWrapper = styled.div`
   display: flex;
+  align-items: flex-start;
 `
 
 const ProductListHeader = () => {

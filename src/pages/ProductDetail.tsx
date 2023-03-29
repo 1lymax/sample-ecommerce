@@ -1,13 +1,14 @@
 // @flow
 import * as React from "react";
-import styled from "styled-components";
-import {useNavigate, useParams} from "react-router";
-import {useGetProductByIdQuery} from "../store/actions/product.api";
-import LoadingContainer from "../components/LoadingContainer";
-import {useMessageError} from "../hooks/useMessageError";
-import {RatingStars} from "../components/Product/RatingStars";
 import {Button} from "@mui/material";
+import styled from "styled-components";
 import {ChevronLeft} from "@mui/icons-material";
+import {useNavigate, useParams} from "react-router";
+
+import {useMessageError} from "../hooks/useMessageError";
+import LoadingContainer from "../components/LoadingContainer";
+import {RatingStars} from "../components/Product/RatingStars";
+import {useGetProductByIdQuery} from "../store/actions/product.api";
 
 const Container = styled.div`
   width: 800px;

@@ -1,13 +1,14 @@
 // @flow
 import * as React from "react";
-import {FC, useEffect, useState} from "react";
 import styled from "styled-components";
-import {Autocomplete, InputAdornment, OutlinedInput, TextField} from "@mui/material";
 import {Search} from "@mui/icons-material";
-import {useGetCategoriesQuery} from "../../store/actions/product.api";
-import {useAppSelector} from "../../hooks/useAppSelector";
+import {FC, useEffect, useState} from "react";
+import {Autocomplete, InputAdornment, OutlinedInput, TextField} from "@mui/material";
+
 import {useProductActions} from "../../hooks/apiActions";
+import {useAppSelector} from "../../hooks/useAppSelector";
 import {useMessageError} from "../../hooks/useMessageError";
+import {useGetCategoriesQuery} from "../../store/actions/product.api";
 
 const Container = styled.div`
   display: flex;

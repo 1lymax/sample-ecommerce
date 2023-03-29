@@ -1,11 +1,12 @@
 // @flow
-import * as React from "react";
 import {FC} from "react";
-import {IProduct} from "../../types/product.type";
-import {Link, TableCell, TableRow} from "@mui/material";
-import {RatingStars} from "./RatingStars";
-import {useNavigate} from "react-router";
+import * as React from "react";
 import styled from "styled-components";
+import {useNavigate} from "react-router";
+import {RatingStars} from "./RatingStars";
+import {Link, TableCell, TableRow} from "@mui/material";
+
+import {IProduct} from "../../types/product.type";
 
 const Image = styled.div<{ source: string }>`
   width: 150px;

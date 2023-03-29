@@ -1,6 +1,6 @@
 import {configureStore} from "@reduxjs/toolkit";
-import {productSlice} from "./slices/product.slice";
 import {productApi} from "./actions/product.api";
+import {productSlice} from "./slices/product.slice";
 
 
 export const store =

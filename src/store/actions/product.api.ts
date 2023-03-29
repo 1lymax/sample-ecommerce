@@ -1,7 +1,8 @@
-import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {IProductCreate, IProduct, IProductApiResult} from "../../types/product.type";
-import {PRODUCT_API_URL, SELECTED_COLUMNS} from "../../config/api.config";
 import queryString from "query-string";
+import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
+
+import {PRODUCT_API_URL, SELECTED_COLUMNS} from "../../config/api.config";
+import {IProductCreate, IProduct, IProductApiResult} from "../../types/product.type";
 
 
 export const productApi = createApi({
@@ -18,13 +19,8 @@ export const productApi = createApi({
             }),
             providesTags: ["product"]
         }),
-
         getProductById: builder.query<IProduct, string | undefined>({
             query: (id) => `${id}`,
-        }),
-        getProductByCategory: builder.query<IProductApiResult, any>({
-            query: (arg) => `category/${arg.category}`,
-            providesTags: ["product"]
         }),
         getCategories: builder.query<string[], void>({
             query: () => `categories`,
@@ -47,7 +43,6 @@ export const {
     useGetProductByIdQuery,
     useCreateProductMutation,
     useGetCategoriesQuery,
-    useGetProductByCategoryQuery
 } = productApi;
 
 export const {} = productApi.endpoints;

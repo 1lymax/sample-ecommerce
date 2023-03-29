@@ -1,11 +1,12 @@
 // @flow
-import * as React from "react";
 import {FC} from "react";
+import * as React from "react";
 import styled from "styled-components";
+import {North, South} from "@mui/icons-material";
+
+import {useProductActions} from "../hooks/apiActions";
 import {useAppSelector} from "../hooks/useAppSelector";
 import {productColumns} from "../config/product.columns";
-import {North, South} from "@mui/icons-material";
-import {useProductActions} from "../hooks/apiActions";
 
 const Container = styled.div`
   margin: 5px;
